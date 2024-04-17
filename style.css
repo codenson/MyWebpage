@@ -73,7 +73,7 @@ html {
 .flexItems {
   flex: 1fr;
   border: 1px solid black !important;
-  height: 45vh;
+  height: 60%;
 }
 .imageText {
   flex: 1fr;
