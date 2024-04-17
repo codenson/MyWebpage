@@ -74,8 +74,9 @@ html {
   flex: 1fr;
   border: 1px solid black !important;
   height: auto;
-  width: 400px;
-  height: 300px;
+  position: relative;
+  /* width: 30%; */
+  height: auto;
 }
 .imageText {
   flex: 1fr;
@@ -186,6 +187,9 @@ h5 {
   h1 {
     font-size: 20pt !important;
   }
+  .skillsSec {
+    font-size: 10pt;
+  }
 }
 @media (max-width: 400px) {
   h1 {
@@ -205,6 +209,9 @@ h5 {
     justify-content: center;
     border: 1px solid black;
     max-width: fit-content;
+  }
+  .skillsSec {
+    font-size: 5pt;
   }
 }
 
