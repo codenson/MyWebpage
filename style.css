@@ -91,10 +91,10 @@ html {
 }
 
 .skillsSec {
-  background-color: #9ee5e5;
+  /* background-color: #9ee5e5; */
   background-color: #0e1212;
   padding: 1rem;
-  color: white;
+  color: #65f0b9;
 }
 .contain {
   display: flex;
