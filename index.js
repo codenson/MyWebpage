@@ -1,7 +1,7 @@
 async function getWeather() {
   try {
     const response = await fetch(
-      "https://api.open-meteo.com/v1/forecast?latitude=38.53&longitude=77.02&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m"
+      "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m"
     );
 
     const weather = await response.json();
@@ -12,7 +12,7 @@ async function getWeather() {
     console.log("Current Temperature:", currentTemperature + "°C");
 
     document.querySelector(".p").innerHTML =
-      "Temperature in Washington DC Now: " + currentTemperature + "°C";
+      "Temperature in Berlin: " + currentTemperature + "°C";
 
     var time = weather.current.time;
     document.querySelector(".time").textContent = "As of " + time;
