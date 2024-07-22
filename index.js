@@ -42,10 +42,9 @@ async function fetchBitcoinLatestPrice() {
     const data = await response.json();
     var price = Math.round(data.rate);
 
-    document.querySelector(".btc").textContent = "BTC: $" + price;
-
   } catch (error) {
     console.error("Error fetching Bitcoin price:", error);
+    document.querySelector(".btc").textContent = "BTC Price: N/A";
   }
 }
 
