@@ -186,7 +186,7 @@ h5 {
     font-size: 5pt;
   }
   .smallPicMobil{
-    display: block;
+    display: flex;
   }
   .image1{
     display: none;
