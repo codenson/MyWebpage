@@ -1,21 +1,33 @@
 async function getWeather() {
   try {
     const response = await fetch(
-      "https://api.open-meteo.com/v1/forecast?latitude=38.8951&longitude=77.0364&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m"
+      "https://api.open-meteo.com/v1/forecast?latitude=38.8951&longitude=-77.0364&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m",
+
     );
 
     const weather = await response.json();
     console.log(weather);
 
     // Accessing current weather data
-    const currentTemperature = weather.current.temperature_2m;
-    console.log("Current Temperature:", currentTemperature + "°C");
+    var currentTemperature = weather.current.temperature_2m * (9 / 5) + 32;
+    console.log("Current Temperature:", currentTemperature + "°F");
+
 
     document.querySelector(".p").innerHTML =
-      "Berlin: " + currentTemperature + "°C";
+      "Washington DC : " + currentTemperature + "°F";
 
-    var time = weather.current.time;
-    document.querySelector(".time").textContent = "As of " + time;
+    // var time = weather.current.time;
+
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+    const day = String(now.getDate()).padStart(2, '0');
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    const formattedDateTime = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+
+    document.querySelector(".time").textContent = "As of " + formattedDateTime;
 
     var windSpeed = weather.current.wind_speed_10m;
     document.querySelector(".windSpeed").textContent =
