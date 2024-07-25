@@ -2,8 +2,6 @@ async function getWeather() {
   try {
     const response = await fetch(
       "https://api.open-meteo.com/v1/forecast?latitude=38.8951&longitude=77.0364&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m"
-      //"https://api.open-meteo.com/v1/forecast?latitude=38.9072&longitude=77.0369&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m"
-      // "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m"
     );
 
     const weather = await response.json();
@@ -30,20 +28,22 @@ async function getWeather() {
 getWeather();
 
 async function fetchBitcoinLatestPrice() {
-  const headers = { 'X-CoinAPI-Key': '61F81EC0-A2B1-40C4-8559-A2D1AD0D0A34' };
-  const URL = "https://rest.coinapi.io/v1/exchangerate/btc/usd";
+
+  const apiKey = "8c8e027e046e9f37339663916aa2ba99bb24e6d0a5bba2975f81245a77f508b9";
+  const URL = "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,JPY,EUR&api_key=" + apiKey;
 
   try {
-    const response = await fetch(URL, { headers: headers });
+    const response = await fetch(URL);
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
+
     const data = await response.json();
-    var price = Math.round(data.rate);
+    const price = "BTC: " + data.USD;
+    document.querySelector(".btc").textContent = price;
 
   } catch (error) {
-    console.error("Error fetching Bitcoin price:", error);
     document.querySelector(".btc").textContent = "BTC Price: N/A";
   }
 }
