@@ -10,7 +10,8 @@ async function getWeather() {
 
     // Accessing current weather data
     var currentTemperature = weather.current.temperature_2m * (9 / 5) + 32;
-    console.log("Current Temperature:", currentTemperature + "°F");
+    currentTemperature = currentTemperature.toFixed(2);
+    // console.log("Current Temperature:", currentTemperature + "°F");
 
 
     document.querySelector(".p").innerHTML =
@@ -26,6 +27,7 @@ async function getWeather() {
     const minutes = String(now.getMinutes()).padStart(2, '0');
     const seconds = String(now.getSeconds()).padStart(2, '0');
     const formattedDateTime = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+
 
     document.querySelector(".time").textContent = "As of " + formattedDateTime;
 
