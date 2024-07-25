@@ -33,7 +33,7 @@ async function getWeather() {
 
     var windSpeed = weather.current.wind_speed_10m;
     document.querySelector(".windSpeed").textContent =
-      "Wind Speed: " + windSpeed + " m/s";
+      "Wind Speed: " + windSpeed.toFixed(2) + " m/s";
   } catch (error) {
     console.error("Error fetching weather data:", error);
   }
@@ -54,7 +54,7 @@ async function fetchBitcoinLatestPrice() {
     }
 
     const data = await response.json();
-    const price = "BTC: " + data.USD;
+    const price = "BTC: " + data.USD.toFixed(2);
     document.querySelector(".btc").textContent = price;
 
   } catch (error) {
